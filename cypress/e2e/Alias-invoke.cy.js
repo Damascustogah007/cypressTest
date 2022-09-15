@@ -12,6 +12,16 @@ describe("Alias and Invoke", () => {
       cy.log(name.text());
     });
 
+    // it.only("Validate a specific hair care product", () => {
+    //   cy.visit("https://www.automationteststore.com");
+    //   cy.get(".thumbnail").as("productThumbNail");
+    //   cy.get("@productThumbNail").its("length").should(16);
+    //   cy.get(".pricetag jumbotron")
+    //     .children.eq(0)
+    //     .should("have.property", "title")
+    //     .and("contain", "Add to Cart");
+    // });
+
     it.only("Validate a specific hair care product", () => {
       cy.visit("https://www.automationteststore.com");
       cy.get(".thumbnail").as("productThumbNail");
@@ -19,7 +29,7 @@ describe("Alias and Invoke", () => {
       cy.get(".pricetag jumbotron")
         .children.eq(0)
         .should("have.property", "title")
-        .and("contain", "Add to Cart");
+        .and("contain", "Add to Cart")
     });
   });
 });
