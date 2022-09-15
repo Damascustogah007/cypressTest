@@ -61,4 +61,58 @@ jobs:
 
           - runci-Variable
 
-          
+   steps:
+
+      - name: execute ${{ matrix.test-case }}
+
+        env:
+
+          TEST_CASE: ${{ matrix.test-case }}
+
+          HOME: /root/ # github workflow container environment sets its own HOME dir, we need to override it to find the cypress binary
+
+        run: |
+
+            cd $PROJECT_ROOT
+
+            npm run cy:$TEST_CASE
+
+      - name: upload artifact
+
+        uses: actions/upload-artifact@v3
+
+        if: always()
+
+        with:
+
+          name: ${{ matrix.test-case }}
+
+          path: '**'
+
+
+
+  analyse-results:
+
+    runs-on: ubuntu-22.04
+
+    needs: execue_tests
+
+    if: always()
+
+    steps:
+
+      - name: download artifacts
+
+        uses: actions/download-artifact@v3
+
+
+
+      - name: Publish Test Report
+
+        uses: nx-actions/action-junit-report@v3
+
+        with:
+
+          report_paths: "**/result*.xml"
+
+            
