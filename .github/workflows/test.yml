@@ -6,8 +6,8 @@ name: Continous testing with github action
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "practise"]
- 
+    branches: [ "main" ]
+  
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -15,7 +15,6 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  # cypress-run :
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -34,85 +33,3 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-
-   execue_tests:
-
-    name: execute test
-
-    needs: build_and_push
-
-    runs-on: ubuntu-22.04
-
-   strategy:
-
-      fail-fast: false
-
-      matrix:
-
-        test-case:
-
-          - runci-Alias
-
-          - runci-Approach
-
-          - runci-Iteration
-
-          - runci-Promise
-
-          - runci-Variable
-
-   steps:
-
-      - name: execute ${{ matrix.test-case }}
-
-        env:
-
-          TEST_CASE: ${{ matrix.test-case }}
-
-          HOME: /root/ # github workflow container environment sets its own HOME dir, we need to override it to find the cypress binary
-
-        run: |
-
-            cd $PROJECT_ROOT
-
-            npm run cy:$TEST_CASE
-
-      - name: upload artifact
-
-        uses: actions/upload-artifact@v3
-
-        if: always()
-
-        with:
-
-          name: ${{ matrix.test-case }}
-
-          path: '**'
-
-
-
-  analyse-results:
-
-    runs-on: ubuntu-22.04
-
-    needs: execue_tests
-
-    if: always()
-
-    steps:
-
-      - name: download artifacts
-
-        uses: actions/download-artifact@v3
-
-
-
-      - name: Publish Test Report
-
-        uses: nx-actions/action-junit-report@v3
-
-        with:
-
-          report_paths: "**/result*.xml"
-
-            
