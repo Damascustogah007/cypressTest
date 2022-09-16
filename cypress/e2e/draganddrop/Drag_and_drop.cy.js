@@ -7,8 +7,18 @@ describe("Drag and drop", () => {
       .click({ force: true });
   });
 
-  it("Should drag and drop draggable items", () => {
-    cy.get("#draggable").trigger("mousedown", { which: 1 });
-    cy.get("#droppable").trigger('mousemove').trigger('mousedown', {force:true})
+//   it("Should drag and drop draggable items", () => {
+//     cy.get("#draggable").trigger("mousedown", { which: 1 });
+//     cy.get("#droppable")
+//       .trigger("mousemove")
+//       .trigger("mousedown", { force: true });
+//   });
+
+  it("Should click and hold don the left mouse", () => {
+    cy.get("#click-box")
+      .trigger("mousedown", { which: 1 })
+      .then(($el) => {
+        expect($el).to.have.css("background-color", "rgb(0, 255, 0)");
+      });
   });
 });
