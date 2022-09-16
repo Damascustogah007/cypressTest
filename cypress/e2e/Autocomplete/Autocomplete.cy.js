@@ -10,7 +10,7 @@ describe("Handling  autocomplete ", () => {
       const productToSelect = "Avacado";
 
       if (prod === productToSelect) {
-        $el.click();
+        $el.trigger("click");
         cy.get("#submit-button").click();
         cy.url().should("include", productToSelect);
       }
@@ -28,7 +28,7 @@ describe("Handling  autocomplete ", () => {
       const fruitName = "Grapes";
 
       if (fruits === fruitName) {
-        $el.click();
+        $el.trigger("click");
         cy.get("#submit-button").click();
         cy.url().should("include", "Grape");
       }
