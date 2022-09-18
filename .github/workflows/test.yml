@@ -1,32 +1,21 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Continous testing with github action
+name: Cypress Tests using Cypress Docker Image
 
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  
+on: [push]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   cypress-run:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node12.18.3-chrome87-ff82
     steps:
-      uses: cypress-io/github-action@v4.2.0
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v4.x.x # use the explicit version number
         with:
-          build: npm run build
-          start: npm start
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          # Specify Browser since container image is compile with Firefox
+          browser: firefox
