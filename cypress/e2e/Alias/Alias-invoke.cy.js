@@ -29,7 +29,7 @@ describe("Alias and Invoke", () => {
       cy.get(".pricetag jumbotron")
         .children.eq(0)
         .should("have.property", "title")
-        .and("contain", "Add to Cart")
+        .and("contain", "Add to Cart");
     });
   });
 });
