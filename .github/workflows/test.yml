@@ -2,7 +2,9 @@
 
 name: Cypress Tests using Cypress Docker Image
 
-on: [push]
+on: 
+  push:
+    branches: ["practise"]
 
 jobs:
   cypress-run:
