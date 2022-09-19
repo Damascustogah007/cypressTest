@@ -2,7 +2,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    chromeWebSecurity: false,
+    chromeWebSecurity: true,
     baseUrl: "https://letcode.in/",
     include: ["./node_modules/cypress", "cypress/**/*.js"],
     reporter: "spec",
@@ -29,7 +29,7 @@ module.exports = defineConfig({
     projectId: "k2w24e",
     scrollBehavior: "center",
     video: false,
-    viewportHeight: 1366,
-    viewportWidth: 768,
+    viewportHeight: 768,
+    viewportWidth: 1366,
   },
 });
