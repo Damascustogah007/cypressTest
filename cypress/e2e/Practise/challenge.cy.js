@@ -7,9 +7,9 @@ describe("New Challenge", () => {
 //       globalThis.data = data;
 //     });
 //   });
-  beforeEach(() => {
-    cy.viewport(1366, 768);
-  });
+//   beforeEach(() => {
+//     // cy.viewport(1366, 768);
+//   });
 
   it("Should sign up user", () => {
     cy.visit(baseUrl);
