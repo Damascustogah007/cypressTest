@@ -26,7 +26,7 @@ module.exports = defineConfig({
     screenshotOnRunFailure: true,
     waitForAnimations: true,
     watchForFileChanges: true,
-    projectId: "k2w24e",
+    projectId: "pa38e3",
     scrollBehavior: "center",
     video: false,
     viewportHeight: 768,
