@@ -1,2 +1,6 @@
 node_modules/
-
+screenshotsFolder/
+videosFolder/
+reports/
+results/
+mochawesome.json/
