@@ -1,6 +1,3 @@
 {
-    "plugins": [
-      "cypress",
-      "chai-friendly"
-    ]
-  }
+  "plugins": ["cypress", "chai-friendly"]
+}

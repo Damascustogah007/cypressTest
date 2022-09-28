@@ -18,6 +18,10 @@ Cypress.Commands.add('login', (name, email, password) => {
     cy.contains("SIGN UP").click();
 })
 
+// Cypress.Commands.add('dataCy', (value) => {
+//     return cy.get(`[data-cy=${value}]`)
+//   })
+
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
