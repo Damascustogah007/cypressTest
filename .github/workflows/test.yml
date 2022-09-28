@@ -34,7 +34,7 @@ jobs:
 
         with:
           # Specify Browser since container image is compile with Firefox
-          browser: chrome
+          browser: electron
           record: true
         env:
           CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
