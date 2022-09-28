@@ -8,6 +8,7 @@ on:
 
 jobs:
   cypress-run:
+    time-out minutes : 15
     runs-on: ubuntu-latest
     container: cypress/browsers:node12.18.3-chrome87-ff82
     strategy:
@@ -23,9 +24,17 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v4 # use the explicit version number
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          if-no-files-found: error
+          path: build
+
         with:
           # Specify Browser since container image is compile with Firefox
-          browser: electron
+          browser: chrome
           record: true
         env:
           CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
