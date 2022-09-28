@@ -29,7 +29,11 @@ module.exports = defineConfig({
       openMode: 0,
     },
     downloadsFolder: "cypress/downloads",
-    env: {},
+    env: {
+      name : "Charles",
+      email : "Charles.togah@google.com",
+      pass : "123456Aa_"
+    },
     reporter: "cypress-multi-reporters",
     reporterOptions: {
       configFile: "reporter-config.json",
