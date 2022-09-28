@@ -16,20 +16,14 @@ jobs:
       matrix:
         # run copies of the current job in parallel
         containers: [1, 2, 3, 4, 5]
-    steps:
+     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v4 # use the explicit version number
-
-      - name: Save build folder
-        uses: actions/upload-artifact@v2
+      - name: Download the build folders
+        uses: actions/download-artifact@v2
         with:
           name: build
-          if-no-files-found: error
           path: build
 
         with:
