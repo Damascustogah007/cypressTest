@@ -1,9 +1,10 @@
-describe("Test Mouse Actions ", () => {
-  it("Scroll element into view", () => {
-    cy.visit("http://www.webdriveruniversity.com");
-    cy.get("#actions")
+describe('Test Mouse Actions ', () => {
+  it('Scroll element into view', () => {
+    cy.visit('http://www.webdriveruniversity.com');
+    cy.get('#actions')
       .scrollIntoView()
-      .invoke("removeAttr", "target")
+      .invoke('removeAttr', 'target')
       .click({ force: true });
+    cy.wait(1000);
   });
 });
